@@ -39,17 +39,23 @@ function deleteClick(id) {
 // DeleteItem Function
 const archivePush = ref([]);
 const studentId = ref(-1);
-function deleteItem(obj) {
-  students.value = students.value.filter((student) => student.id !== obj.id);
+function deleteItem() {
+  students.value = students.value.filter((student) => student.id !== studentId.value);
 
   //Remove from localstorage
-  const archiveFromStorage = JSON.parse(localStorage.getItem("students")) ?? [];
-  const updatedArchive = archiveFromStorage.filter(
+  const studentsFromStorage =
+    JSON.parse(localStorage.getItem("students")) ?? [];
+  const updateUsers = studentsFromStorage.filter(
     (student) => student.id !== studentId.value
   );
-  localStorage.setItem("students", JSON.stringify(updatedArchive));
+  localStorage.setItem("students", JSON.stringify(updateUsers));
+
   showCartonFunction();
-  archivePush.value.push(obj);
+  const archiveUser = studentsFromStorage.find(
+    (student) => student.id === studentId.value
+  );
+
+  archivePush.value.push(archiveUser);
   JSON.parse(localStorage.getItem("archive")) || [];
   localStorage.setItem("archive", JSON.stringify(archivePush.value));
 }

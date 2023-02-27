@@ -98,10 +98,10 @@ function deleteItem(id) {
     // Update localStorage for students
     const studentsFromStorage =
       JSON.parse(localStorage.getItem("students")) ?? [];
-    localStorage.setItem(
-      "students",
-      JSON.stringify([...studentsFromStorage, student])
+    const sorted = [...studentsFromStorage, student].sort(
+      (a, b) => a.id - b.id
     );
+    localStorage.setItem("students", JSON.stringify(sorted));
   }
 }
 

@@ -11,10 +11,6 @@ const { showCartonFunction, data, deleteItem, studentId } = defineProps([
 function onCancel() {
   showCartonFunction();
 }
-
-const selectedStudent = computed(() => {
-  return data.find((d) => d.id === studentId);
-});
 </script>
 
 <template>
@@ -46,11 +42,7 @@ const selectedStudent = computed(() => {
           <button type="button" class="btn btn-secondary" @click="onCancel">
             Cancel
           </button>
-          <button
-            type="button"
-            class="btn btn-danger"
-            @click="deleteItem(selectedStudent)"
-          >
+          <button type="button" class="btn btn-danger" @click="deleteItem()">
             Delete
           </button>
         </div>

@@ -65,7 +65,7 @@ watch(
                   class="btn btn-primary me-2"
                   @click="editValue.updateUser"
                 >
-                  Edit
+                  Save
                 </button>
                 <button
                   type="button"
